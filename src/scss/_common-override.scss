@@ -1,0 +1,19 @@
+.big {
+  font-size: 2.5em;
+}
+
+.small {
+  font-size: 0.8rem;
+}
+
+.x-small {
+  font-size: 0.6rem;
+}
+
+main {
+  min-height: 100vh;
+}
+
+body {
+  background-color: lighten(map-get($colors, "primary"), 40);
+}

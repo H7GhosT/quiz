@@ -1,0 +1,129 @@
+@function shadow-border($width, $color) {
+  @return inset 0 0 0 $width $color;
+}
+
+.ol-text-field {
+  position: relative;
+  font-size: 1em;
+  box-shadow: shadow-border(1px, lightgray);
+  border-radius: 5px;
+  margin: 0.8em 0;
+  transition: 0.1s;
+
+  &:hover {
+    box-shadow: none;
+    box-shadow: shadow-border(1px, black);
+  }
+
+  &__input {
+    all: unset;
+    box-sizing: border-box;
+
+    width: 100%;
+    border-radius: inherit;
+
+    font-weight: 300;
+    transition: 0.1s;
+    padding: 1em;
+  }
+
+  &__label {
+    position: absolute;
+    left: 1em;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+
+    transition: 0.2s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: white;
+      z-index: -1;
+      transform: scaleX(0);
+
+      transition: 0.2s;
+    }
+  }
+
+  &.has-text &__label {
+    top: 0;
+    font-size: 0.85em;
+    padding: 0 4px;
+
+    &::before {
+      transform: initial;
+    }
+  }
+
+  &.active {
+    box-shadow: shadow-border(2px, map-get($colors, "accent"));
+  }
+
+  &.active &__label {
+    color: map-get($colors, "accent");
+  }
+}
+
+.ul-text-field {
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid gray;
+  transition: 0.2s;
+  font-size: 1em;
+  font-weight: inherit;
+
+  &__input {
+    all: unset;
+
+    font-size: 1em;
+    font-weight: inherit;
+    resize: none;
+    width: 100%;
+    // max-height: 6em;
+    min-height: 1em;
+    height: 1em;
+    word-wrap: break-word;
+    overflow-x: hidden;
+    cursor: text;
+  }
+  &:hover {
+    border-color: black;
+  }
+
+  &.active {
+    border-color: map-get($colors, "accent");
+  }
+}
+
+.inline-text-field {
+  all: unset;
+  display: inline-block;
+
+  transition: 0.2s;
+  height: 1em;
+  
+  &:not(:focus) {
+    border-bottom: 1px solid gray;
+  }
+  
+  &:hover {
+    border-bottom-color: black;
+  }
+  
+  &:focus {
+    border-radius: 1px;
+    background-color: white;
+    box-shadow:
+      0px 0px 0px 2px white,
+      0px 0px 0px 4px map-get($colors, "accent"),
+      0px 3px 4px 4px map-get($colors, "shadow");
+    z-index: 10;
+    transform: scale(1.2);
+  }
+}

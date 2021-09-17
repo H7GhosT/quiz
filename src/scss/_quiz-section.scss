@@ -1,0 +1,30 @@
+.quiz-section {
+  margin: 2em 0;
+  position: relative;
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__remove {
+    &-wrapper {
+      position: absolute;
+      right: 3em;
+      top: 0px;
+      background-color: white;
+      @include elevation(1);
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      padding: .5em;
+      transition: .2s;
+      transform: translateY(-20%);
+  }
+  }
+
+  &:hover &__remove-wrapper {
+    transform: translateY(-75%);
+  }
+  &__remove-wrapper:hover {
+    transform: translateY(-100%) !important;
+  }
+}

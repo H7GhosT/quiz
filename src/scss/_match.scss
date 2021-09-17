@@ -1,0 +1,103 @@
+$connection-color: #00a8a8;
+
+.match {
+  display: flex;
+  flex-direction: row;
+
+  &__side {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // &__middle {
+  // }
+
+  &-button {
+    border: none;
+    outline: none;
+
+    display: block;
+    position: relative;
+    padding: .5em 1em;
+    margin: 3px 0;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid gray;
+    cursor: pointer;
+    width: 100%;
+    max-width: min(200px, 33vw);
+    word-wrap: break-word;
+    transition: 0.3s;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0.8em;
+      height: 0.8em;
+      border-radius: 50%;
+      background-color: white;
+      border: 2px solid $connection-color;
+      top: 50%;
+      transition: 0.3s;
+
+      z-index: 100;
+    }
+
+    &--left {
+      text-align: left;
+    }
+
+    &--right {
+      text-align: right;
+    }
+
+    &:active {
+      background-color: lightgray;
+    }
+
+    &:focus,
+    &:hover,
+    &--active {
+      &::after {
+        background-color: map-get($colors, "accent");
+        border-color: map-get($colors, "accent");
+      }
+      @include elevation(2);
+    }
+
+    &--active {
+      &::after {
+        background-color: $connection-color;
+        border-color: $connection-color;
+      }
+    }
+
+    &--left::after {
+      right: 0;
+      transform: translate(50%, -50%);
+    }
+
+    &--right::after {
+      left: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    &__wrapper {
+      position: relative;
+      display: flex;
+      justify-content: stretch;
+      .match-button__remove {
+        position: absolute;
+        top: 50%;
+      }
+      &--left .match-button__remove {
+        left: 0;
+        transform: translate(-120%, -50%);
+      }
+      &--right .match-button__remove {
+        right: 0;
+        transform: translate(120%, -50%);
+      }
+    }
+  }
+}

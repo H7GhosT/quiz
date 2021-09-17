@@ -1,0 +1,113 @@
+@mixin elevation($i) {
+  box-shadow: 0px #{$i}px #{$i + 2}px #{$i * .3}px map-get($colors, "shadow");
+}
+
+:root {
+  font-size: 15px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+}
+
+.title {
+  position: relative;
+  color: rgba(var(--color), 1);
+  font-size: 1.8em;
+  font-weight: 700;
+  padding-left: 0.5em;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 0.25em;
+    height: 100%;
+    background-color: rgba(var(--color), 1);
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.subtitle {
+  font-weight: 600;
+  font-size: 1.33em;
+}
+
+.spacex-1px {
+  display: inline-block;
+  padding-left: 1px;
+}
+
+@for $i from 1 through 4 {
+  .spacex-#{$i} {
+    padding-left: $i * 1rem;
+  }
+  .spacey-#{$i} {
+    padding-top: $i * 1rem;
+  }
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@for $i from 1 through 6 {
+  .paper-#{$i} {
+    background-color: white;
+    border-radius: 5px;
+    padding: 2em 3em;
+    @include elevation($i);
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 1em;
+  max-width: 720px;
+  min-width: 500px;
+}
+
+.primary {
+  --color: #{map-get($rgb-color-map, "primary")};
+}
+
+.secondary {
+  --color: #{map-get($rgb-color-map, "secondary")};
+}
+
+.accent {
+  --color: #{map-get($rgb-color-map, "accent")};
+}
+
+.success {
+  --color: #{map-get($rgb-color-map, "success")};
+}
+
+.full-width-hr {
+  border: none;
+  outline: none;
+
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 1px;
+    background-color: black;
+  }
+}

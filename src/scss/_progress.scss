@@ -1,0 +1,31 @@
+.progress {
+  display: inline-block;
+  position: relative;
+
+  &__text {
+    white-space: nowrap;
+    color: map-get($colors, "secondary");
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  &__bar {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: stretch;
+    height: .32rem;
+    bottom: -0.3rem;
+  }
+
+  &__bit {
+    background-color: map-get($colors, "secondary");
+    height: 100%;
+    width: 1px;
+    flex-grow: 1;
+
+    &--done {
+      background-color: map-get($colors, "success");
+    }
+  }
+}

@@ -1,0 +1,62 @@
+body {
+  transition: 0.3s;
+}
+
+.blured {
+  filter: blur(3px);
+  transition: 0.3s;
+}
+
+.hide-overflow {
+  overflow: hidden;
+}
+
+.modal {
+  &__overlay {
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: 0.3s;
+    background-color: black;
+    opacity: 0;
+  }
+
+  &--open &__overlay {
+    display: flex;
+    background-color: #000000b9;
+    transition: 0.3s;
+    opacity: 1;
+  }
+
+  &__content {
+    position: relative;
+    min-width: min(420px, 100%);
+    max-width: 600px;
+
+    transition: 0.3s;
+    z-index: 1001;
+
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+
+  &--open &__content {
+    opacity: 1;
+    height: initial;
+    transform: none;
+  }
+
+  &__header {
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
